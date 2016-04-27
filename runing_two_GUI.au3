@@ -21,19 +21,19 @@ Gestion de la fermeture des fenetres doit être prise en compte
 
    GUISetState(@SW_SHOW, $hGUI1)
 
-	while 1
-Switch GUIGetMsg()
-	Case $GUI_EVENT_CLOSE
-	Exit
-	Case $idBouton
-	GUISetState(@SW_HIDE, $hGUI1)
-GUISetState(@SW_SHOW, $hGUI2)
-	Case $idBouton2
-	GUISetState(@SW_HIDE, $hGUI2)
-GUISetState(@SW_Show, $hGUI1)
+while 1
+   Switch GUIGetMsg()
+	  Case $GUI_EVENT_CLOSE
+		 Exit
+	  Case $idBouton
+		 GUISetState(@SW_HIDE, $hGUI1)
+		 GUISetState(@SW_SHOW, $hGUI2)
+	  Case $idBouton2
+		 GUISetState(@SW_HIDE, $hGUI2)
+		 GUISetState(@SW_Show, $hGUI1)
 	Case $idCheckBox
-	MsgBox(8192, "Check Box", "vous avez cliquer sur la check box")
+		 MsgBox(8192, "Check Box", "vous avez cliquer sur la check box")
 	Case $idRadioBox
-	MsgBox(131072, "Radio Box", "vous avez cliquer sur la radio box")
+		 MsgBox(131072, "Radio Box", "vous avez cliquer sur la radio box")
 	EndSwitch
-	WEnd
+WEnd

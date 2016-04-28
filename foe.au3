@@ -11,14 +11,14 @@ Essai automatisation
 
 ;1er argument nb tour à *3 pour avoir le total
 ;2e argument position x de depart Le 3en position y
-;ramasse_piece(7, 3460, 298)
+;ramasse_piece(7, 3157, 243)
 
 ;Argument 1 nb de joueur { VOISIN = 79, GUILDE = 22, AMI = 4}
 ;Pour 2 onglet 79 + 22 Pour 3 onglet 79 + 22 + 4
 ;Argument 2 nb_onglet_parthern {1 2 3}
 
 
-aide_joueur(79)
+;aide_joueur(79)
 
 
 Func aide_joueur($nb_perso)

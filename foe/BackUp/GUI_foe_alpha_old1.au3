@@ -1,13 +1,6 @@
-#cs
-Script de creation de la GUI pour l'apli de controle de Forge of empire
-Plateforme : Windows 32 et 64 Bit
-Author: Doc2rue
-28/04/2016
-Include dans le fichier : alpha_control_foe.au3
-#ce
 #Region ### START Koda GUI section ### Form=d:\programmation\autoit3\scite\koda\forms\control_alpha_foe.kxf
 Global $ecran = GUICreate("Controle Forge of empire", 394, 408, 2565, 255)
-GUISetCursor(0)
+GUISetCursor (0)
 GUISetFont(12, 800, 0, "Impact")
 GUISetBkColor(0xC8C8C8)
 Global $groupe_ramasse_Piece = GUICtrlCreateGroup("Ramasse Piece", 8, 16, 377, 161)
@@ -60,9 +53,9 @@ Global $buton_ramasse_piece = GUICtrlCreateButton("Ramasse-pièces", 176, 112, 19
 GUICtrlSetFont(-1, 14, 800, 0, "Lucida Sans Unicode")
 GUICtrlSetColor(-1, 0xFF0000)
 GUICtrlSetBkColor(-1, 0x000000)
-GUICtrlSetCursor(-1, 0)
+GUICtrlSetCursor (-1, 0)
 GUICtrlCreateGroup("", -99, -99, 1, 1)
-GUICtrlSetCursor(-1, 0)
+GUICtrlSetCursor (-1, 0)
 Global $groupe_aide_perso = GUICtrlCreateGroup("Aides Personnages", 8, 184, 377, 169)
 GUICtrlSetFont(-1, 12, 800, 0, "Palatino Linotype")
 GUICtrlSetColor(-1, 0x808000)
@@ -113,7 +106,7 @@ Global $buton_aide_perso = GUICtrlCreateButton("Aider Personnages", 192, 296, 18
 GUICtrlSetFont(-1, 14, 800, 0, "Palatino Linotype")
 GUICtrlSetColor(-1, 0xFF0000)
 GUICtrlSetBkColor(-1, 0x000000)
-GUICtrlSetCursor(-1, 0)
+GUICtrlSetCursor (-1, 0)
 Global $label_nb_onglet = GUICtrlCreateLabel("nb_onglet:", 168, 264, 61, 19)
 GUICtrlSetFont(-1, 8, 400, 0, "Lucida Sans Unicode")
 GUICtrlSetColor(-1, 0x00FF00)

@@ -34,11 +34,17 @@ Func main()
 			Case $buton_les_deux
 				ramasse_piece(7, GUICtrlRead($pos_x_depart_piece), GUICtrlRead($pos_y_depart_piece))
 				aide_joueur()
+			 Case $nb_onglet
+
 		EndSwitch
-		Sleep(20)
+		Sleep(10)
 		$i = $i + 1
 	WEnd
-EndFunc   ;==>main
+ EndFunc   ;==>main
+
+Func coordonnee()
+
+EndFunc
 
 Func ramasse_piece($nb_tour, $pos_depart_x, $pos_depart_y)
 	$x = GUICtrlRead($pos_x_top_right_piece)
@@ -65,39 +71,18 @@ EndFunc   ;==>ramasse_piece
 
 Func aide_joueur()
 	Const $nb_perso_page = 5
-	$coeficient_perso_x = 105
-	$nb_onglet = 1
-	$button_double_fleche_x = GUICtrlRead($pos_x_fleche)
-	$button_double_fleche_y = GUICtrlRead($pos_y_fleche)
+	$nb_perso = GUICtrlRead($input_nb_perso)
 	$button_perso_y = GUICtrlRead($pos_y_depart_aide)
 	$pos_x = GUICtrlRead($pos_x_depart_aide)
+	;$nb_joueur = [79, 22, 4]
 
+	$coeficient_perso_x = 105
+	$button_double_fleche_x = GUICtrlRead($pos_x_fleche)
+	$button_double_fleche_y = GUICtrlRead($pos_y_fleche)
+	$onglet_x = GUICtrlRead($pos_x_onglet)
+	$onglet_y = GUICtrlRead($pos_y_onglet)
 
-	Switch GUICtrlRead($choose_onglet)
-	  Case "Choisir"
-		 $nb_perso = GUICtrlRead($input_nb_perso)
-		 $onglet_x = GUICtrlRead($pos_x_onglet)
-		 $onglet_y = GUICtrlRead($pos_y_onglet)
-		 $nb_onglet = GUICtrlRead($input_nb_onglet)
-	  Case "VOISIN"
-		 $nb_perso = 79; ##########ICI Metre une Deuxieme page pour les options au lieu de devoir écrire à la main les valeurs#########
-		 $onglet_x = 737
-		 $onglet_y = 896
-	  Case "GUILDE"
-		 $nb_perso = 22
-		 $onglet_x = 804
-		 $onglet_y = 896
-	  Case "AMI"
-		 $nb_perso = 5
-		 $onglet_x = 867
-		 $onglet_y = 896
-	  Case "LES TROIS"
-		 $nb_onglet = 3
-		 $onglet_x = 737
-		 $onglet_y = 896
-   EndSwitch
-
-	For $i =  $nb_onglet To 1 Step -1
+	For $i = GUICtrlRead($input_nb_onglet) To 1 Step -1
 		MouseClick("left", $onglet_x, $onglet_y)
 		For $click_fleche = 5 To $nb_perso Step $nb_perso_page
 			For $button_perso_x = $pos_x To $pos_x + $coeficient_perso_x * 4 Step 105

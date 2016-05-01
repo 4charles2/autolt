@@ -18,7 +18,6 @@
 
 Global $SourceFile = "" ; Si la personne clique sur Chiffer sans avoir choisi un fichier avant
 Local $password = GUICtrlRead($INPUT_password)
-$idSource_file = ""
 
 While 1
 	$nMsg = GUIGetMsg()
@@ -26,7 +25,7 @@ While 1
 		Case $GUI_EVENT_CLOSE
 			Exit
 		Case $BUTON_chiffrer
-			If ($chkBox_fichier And $sFileOpenDialog <> "") Then
+			If ($chkBox_fichier And GUICtrlRead($SourceFile) <> "") Then
 				chiffrer(1)
 			ElseIf ($chkBox_texte And $INPUT_text) Then
 				chiffrer(2)
@@ -45,7 +44,7 @@ While 1
 			$SourceFile = FileOpenDialog("Parcourir", @DesktopDir, "Tous (*.*)")
 			$sFileOpenDialog = StringReplace($SourceFile, "|", @CRLF)
 			MsgBox($MB_SYSTEMMODAL, "", "You chose the following files:" & @CRLF & $sFileOpenDialog)
-			GUICtrlSetData($idSource_file, $SourceFile)
+			;$GUICtrlSetData($idSource_file, $SourceFile)
 	EndSwitch
 	Sleep(10)
 WEnd
@@ -61,22 +60,21 @@ Func chiffrer($type)
 				MsgBox(64, "Erreur", "Failed to crypt data", 2)
 		EndSelect
 		MsgBox($MB_TASKMODAL, "Text Crypter", $text_crypter)
-	Else
-		$DIR = GUICtrlRead($idSource_file)
+	 Else
+		 $DIR = GUICtrlRead($SourceFile)
 		If _Crypt_EncryptFile($DIR, $DIR, $password, $algo) Then
-			MsgBox(64, "Succes Encrypting", "Operation succes.")
+		   MsgBox(64, "Succes Encrypting", "Operation succes.")
 		Else
-			Switch @error
-				Case 1
-					MsgBox($MB_SYSTEMMODAL, "Error", "Failed to create the key.")
-				Case 2
-					MsgBox($MB_SYSTEMMMODAL, "Error", "Couldn't open the source file.")
-				Case 3
-					MsgBox($MB_SYSTEMMODAL, "Error", "Couldn't open the destination file.")
-				Case 4 Or 5
-					MsgBox($MB_SYSTEMMODAL, "Error", "Encryption error.")
-			EndSwitch
-		EndIf
+		   Switch @error
+		   Case 1
+			  MsgBox($MB_SYSTEMMODAL, "Error", "Failed to create the key.")
+		   Case 2
+			  MsgBox($MB_SYSTEMMMODAL, "Error", "Couldn't open the source file.")
+		   Case 3
+			  MsgBox($MB_SYSTEMMODAL, "Error", "Couldn't open the destination file.")
+		   Case 4 Or 5
+			  MsgBox($MB_SYSTEMMODAL, "Error", "Encryption error.")
+		 EndSwitch
 	EndIf
 EndFunc   ;==>chiffrer
 ;~ #######################Dechiffrer#######################
@@ -131,4 +129,3 @@ Func definition_algorythme()
 			Return $CALG_DES
 	EndSwitch
 EndFunc   ;==>definition_algorythme
-

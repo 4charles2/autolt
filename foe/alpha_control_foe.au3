@@ -50,13 +50,13 @@ Func ramasse_piece($nb_tour, $pos_depart_x, $pos_depart_y)
 	MouseDown($MOUSE_CLICK_LEFT) ;Apui sur le bouton gauche de la souris
 	For $nb_ligne = 0 To $nb_tour Step 1
 
-		MouseMove($x, $y, 50)
+		MouseMove($x, $y, 40)
 		$y += $coeficient_y
-		MouseMove($x, $y, 50)
+		MouseMove($x, $y, 40)
 		$x -= $coeficient_x
-		MouseMove($x, $y, 50)
+		MouseMove($x, $y, 40)
 		$y += $coeficient_y
-		MouseMove($x, $y, 50)
+		MouseMove($x, $y, 40)
 		$x += $coeficient_x
 	Next
 
@@ -102,10 +102,10 @@ Func aide_joueur()
 		For $click_fleche = 5 To $nb_perso Step $nb_perso_page
 			For $button_perso_x = $pos_x To $pos_x + $coeficient_perso_x * 4 Step 105
 				MouseClick("left", $button_perso_x, $button_perso_y, 1, 0)
-				Sleep(1000)
+				Sleep(1100)
 			Next
 			MouseClick("left", $button_double_fleche_x, $button_double_fleche_y)
-			Sleep(10)
+			Sleep(1000)
 		Next
 		$onglet_x += 70
 	Next

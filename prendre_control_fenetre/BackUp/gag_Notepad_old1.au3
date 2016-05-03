@@ -11,36 +11,27 @@
 
 $idPID = Run("Notepad.exe")
 $hWnd = WinWait("[CLASS:Notepad]", "", 10)
-WinMove($hWnd, "", @DesktopHeight / 2, @DesktopWidth / 4)
-Global $interval = 50, $i = 0, $quitter = False
+$posWnd = WinGetPos($hWnd)
+$interval = 105
+$posLimiteX = $posWnd[2] + $posWnd[0] - $interval
+$posLimiteY = $posWnd[1] + $interval
 
-Send("Bonjour ! " & @CRLF & "Esseyez de fermer le note pad !" & @CRLF & "Si Vous n'y arriver pas appuiyez sur les touches Ctrl + Q" & @CRLF & "Nous vous aiderons" & @CRLF)
+Send("Bonjour ! " & @CRLF & "Esseyez de fermer le note pad !" & @CRLF & "Si Vous n'y arriver pas appuiyez sur les touches Ctrl + Q" & @CRLF & "Nous vous aiderons")
 
 ;Fonction HotKeySet fait un callBack si l'USER appuie sur une touche et apel ensuite la fonction designer atend quel s'execute et reprend le processus la ou il s'était arreter
 HotKeySet("^q", quitter)
 
-While Not $quitter
-	$posWnd = WinGetPos($hWnd)
-	$posLimiteX = $posWnd[2] + $posWnd[0] - $interval
-	$posLimiteY = $posWnd[1] + $interval
+While 1
 	$aPos = MouseGetPos()
+
 	;Si la souris s'approche de la croix (des positions x et y déterminé à l'avance)
 	If $aPos[0] > $posLimiteX And $aPos[1] < $posLimiteY Then
 		WinMove($hWnd, "", $posWnd[0] + $interval, $posWnd[1] - $interval)
-		WinSetTitle($hWnd, "", "C'est la " & $i & " Nb de fois Que vous esseyez de fermer la fenetre")
-		$i += 1
-	EndIf
-	If $posWnd[1] < 0 Then
-		WinMove($hWnd, "", 10, @DesktopHeight - $posWnd[3] + 10)
-		;Bouger la fenetre a 10px en x et la taille du bureau en hauteur - la taille de la fenetre + 10
-	EndIf
+	 EndIf
 	Sleep(10)
-WEnd ;==>Boucle Principale
-
-ProcessClose($idPID)
+WEnd
 
 Func quitter()
-   Send("Bravo Vous avez reussi à fermer la fenetre")
-   Sleep(2000)
-   $quitter = True
-EndFunc   ;==>quitter
+   MsgBox(64, "Fermeture", "Bravo Vous avez reussi à fermer la fenetre", 2)
+   Exit
+   EndFunc

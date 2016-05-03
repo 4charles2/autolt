@@ -16,6 +16,8 @@
 #include <MsgBoxConstants.au3>
 #include "GUI_foe_alpha.au3"
 
+HotKeySet("^q", "quitter")
+
 main()
 
 Func main()
@@ -111,3 +113,7 @@ Func aide_joueur()
 	Next
 
 EndFunc   ;==>aide_joueur
+
+Func quitter()
+	Exit
+EndFunc
